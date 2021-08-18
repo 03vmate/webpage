@@ -1,15 +1,15 @@
 var element = document.getElementById("p5");
 let dims = [window.innerWidth, window.innerHeight]
-let pointCount = dims[0] * dims[1] / 5000;
+let pointCount = dims[0] * dims[1] / 3000;
 let speedDiff = 5;
 let circleRadius = 75;
-let cursorRadius = 125;
+let cursorRadius = 150;
 
 let points = []
 
 window.addEventListener('resize', function(event) { //Reinitialize everything size dependent on viewport size change
     dims = [window.innerWidth, window.innerHeight];
-    pointCount = dims[0] * dims[1] / 8000;
+    pointCount = dims[0] * dims[1] / 3000;
     resizeCanvas(dims[0], dims[1]);
     points = [];
     initPoints();
@@ -53,7 +53,7 @@ function draw() {
   let distanceScalar = 255 / circleRadius; //Scalar for length dependent color
   for(var x in points) {
     let dist = getDotDistances(points[x]); //Calculate distance of all dots relative to dot "x"
-    for(var y in points) {
+    for(var y = x; y < points.length; y++) {
       if(dist[y] < circleRadius) {
         stroke(35, 150, 200, 255 - dist[y] * distanceScalar);
         line(points[x][0], points[x][1], points[y][0], points[y][1]); //Draw line from current dot to all other dots within reach
