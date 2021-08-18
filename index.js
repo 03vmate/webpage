@@ -1,6 +1,6 @@
 var element = document.getElementById("p5");
 let dims = [window.innerWidth, window.innerHeight]
-let pointCount = dims[0] * dims[1] / isMobile() ? 6000 : 3000;
+let pointCount = dims[0] * dims[1] / (isMobile() ? 6000 : 3000);
 let speedDiff = 5;
 let circleRadius = 100;
 let cursorRadius = 100;
@@ -9,7 +9,7 @@ let points = []
 
 window.addEventListener('resize', function(event) { //Reinitialize everything size dependent on viewport size change
     dims = [window.innerWidth, window.innerHeight];
-    pointCount = dims[0] * dims[1] / isMobile() ? 6000 : 3000;
+    pointCount = dims[0] * dims[1] / (isMobile() ? 6000 : 3000);
     resizeCanvas(dims[0], dims[1]);
     points = [];
     initPoints();
