@@ -53,7 +53,7 @@ function draw() {
   let distanceScalar = 255 / circleRadius; //Scalar for length dependent color
   for(var x in points) {
     let dist = getDotDistances(points[x]); //Calculate distance of all dots relative to dot "x"
-    for(var y in points) {
+    for(var y = x; y < points.length; y++) {
       if(dist[y] < circleRadius) {
         stroke(35, 150, 200, 255 - dist[y] * distanceScalar);
         line(points[x][0], points[x][1], points[y][0], points[y][1]); //Draw line from current dot to all other dots within reach
